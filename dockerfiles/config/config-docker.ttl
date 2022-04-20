@@ -18,7 +18,7 @@
 :config a skosmos:Configuration ;
     # SPARQL endpoint
     # a local Fuseki server is usually on localhost:3030
-    skosmos:sparqlEndpoint <http://localhost:3030/skosmos/sparql> ;
+    skosmos:sparqlEndpoint <http://srv-captain--skosmos-fuseki:3030/ojvoc_v1/sparql> ;
     # sparql-query extension, or "Generic" for plain SPARQL 1.1
     # set to "JenaText" instead if you use Fuseki with jena-text index
     skosmos:sparqlDialect "JenaText" ;
@@ -33,25 +33,10 @@
     # skosmos:baseHref "http://localhost/Skosmos/" ;
     # interface languages available, and the corresponding system locales
     skosmos:languages (
-        [ rdfs:label "ar" ; rdf:value "ar_AE.utf8" ]
-        [ rdfs:label "da" ; rdf:value "da_DK.utf8" ]
         [ rdfs:label "de" ; rdf:value "de_DE.utf8" ]
         [ rdfs:label "en" ; rdf:value "en_GB.utf8" ]
-        [ rdfs:label "en_US" ; rdf:value "en_US.utf8" ]
-        [ rdfs:label "es" ; rdf:value "es_ES.utf8" ]
-        [ rdfs:label "fa" ; rdf:value "fa_IR.utf8" ]
-        [ rdfs:label "fi" ; rdf:value "fi_FI.utf8" ]
         [ rdfs:label "fr" ; rdf:value "fr_FR.utf8" ]
-        [ rdfs:label "it" ; rdf:value "it_IT.utf8" ]
-        [ rdfs:label "nb" ; rdf:value "nb_NO.utf8" ]
         [ rdfs:label "nl" ; rdf:value "nl_NL.utf8" ]
-        [ rdfs:label "nn" ; rdf:value "nn_NO.utf8" ]
-        [ rdfs:label "pl" ; rdf:value "pl_PL.utf8" ]
-        [ rdfs:label "pt" ; rdf:value "pt_PT.utf8" ]
-        [ rdfs:label "pt_BR" ; rdf:value "pt_BR.utf8" ]
-        [ rdfs:label "ru" ; rdf:value "ru_RU.utf8" ]
-        [ rdfs:label "sv" ; rdf:value "sv_SE.utf8" ]
-        [ rdfs:label "zh" ; rdf:value "zh_CN.utf8" ]
     ) ;
     # how many results (maximum) to load at a time on the search results page
     skosmos:searchResultsSize 20 ;
@@ -84,25 +69,15 @@
 
 # Skosmos vocabularies
 
-:unesco a skosmos:Vocabulary, void:Dataset ;
-    dc:title "UNESCO Thesaurus"@en ;
-    skosmos:shortName "UNESCO";
+:ojvoc a skosmos:Vocabulary, void:Dataset ;
+    dc:title "OJVoc v1"@en ;
+    skosmos:shortName "OJ_voc";
     dc:subject :cat_general ;
-    void:uriSpace "http://skos.um.es/unescothes/";
-    skosmos:language "en", "es", "fr", "ru";
-    skosmos:defaultLanguage "en";
+    void:uriSpace "http://example.com/ojvoc/";
+    skosmos:language "en", "fr", "de", "nl";
+    skosmos:defaultLanguage "fr";
     skosmos:showTopConcepts true ;
     skosmos:fullAlphabeticalIndex true ;
     skosmos:groupClass isothes:ConceptGroup ;
-    void:sparqlEndpoint <http://localhost:3030/skosmos/sparql> ;
-    skosmos:sparqlGraph <http://skos.um.es/unescothes/> .
-
-:stw a skosmos:Vocabulary, void:Dataset ;
-    dc:title "STW Thesaurus for Economics"@en ;
-    skosmos:shortName "STW";
-    dc:subject :cat_general ;
-    void:uriSpace "http://zbw.eu/stw/";
-    skosmos:language "en", "de";
-    skosmos:defaultLanguage "de";
-    void:sparqlEndpoint <http://localhost:3030/skosmos/sparql> ;
-    skosmos:sparqlGraph <http://zbw.eu/stw/> .
+    void:sparqlEndpoint <http://srv-captain--skosmos-fuseki:3030/ojvoc_v1/sparql> ;
+    skosmos:sparqlGraph <http://example.com/ojvoc> .
